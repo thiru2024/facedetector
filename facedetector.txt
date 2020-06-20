@@ -1,0 +1,11 @@
+import cv2
+img=cv2.imread("C:\\Users\\thiru\\Downloads\\trp.webp",1)
+face_cascade = cv2.CascadeClassifier("C:\\Users\\thiru\\Downloads\\haarcascade_frontalface_default.xml")
+resized=cv2.resize(img,(600,600))
+gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
+faces = face_cascade.detectMultiScale(gray, 1.01,89)
+for (x, y, w, h) in faces:
+    cv2.rectangle(resized, (x, y), (w+x, y+h), (0, 255, 56), 4)
+cv2.imshow('tray', resized)
+cv2.waitKey(20000)
+cv2.destroyAllWindows()
